@@ -20,7 +20,7 @@
         <div class="mt-4">
             <x-input-label for="role" :value="__('Role')" />
             <select id="role" name="role" class="block mt-1 w-full">
-                <option value="user">{{ __('User') }}</option>
+                <option value="user">{{ __('Usuario') }}</option>
                 <option value="admin">{{ __('Administrator') }}</option>
             </select>
             <x-input-error :messages="$errors->get('role')" class="mt-2" />

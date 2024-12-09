@@ -10,8 +10,10 @@ use App\Http\Controllers\ReportarController;
 use App\Http\Controllers\AveriaConfirmacionController;
 use App\Http\Controllers\MapaAveriasController;
 use App\Http\Controllers\AveriaConfirmadaController;
-use App\Http\Controllers\AveriasController;
-
+use App\Http\Controllers\AveriaController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HorarioController;
+use App\Http\Controllers\ReporteController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,9 +21,9 @@ Route::get('/', function () {
 
 
 
-Route::get('/dashboard', function () {
+/*Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');*/
 
 Route::get('/check-mail-env', function () {
     return [
@@ -29,7 +31,9 @@ Route::get('/check-mail-env', function () {
         'MAIL_FROM_NAME' => env('MAIL_FROM_NAME'),
     ];
 });
-Route::post('/enviar-averia', [AveriasController::class, 'enviarFormularioAveria'])->name('enviar.averia');
+//Route::post('/enviar-averia', [AveriasController::class, 'enviarFormularioAveria'])->name('enviar.averia');
+Route::post('/guardar-averia', [AveriaController::class, 'guardarAveria'])->name('guardar.averia');
+Route::get('/mapa_con_averias', [AveriaController::class, 'mostrarAverias'])->name('mapa_con_averias');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -60,7 +64,11 @@ Route::get('/instalaciones_confirmada', function () {
     return view('instalaciones_confirmada');
 });
 
-
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('horario', HorarioController::class);
+    Route::resource('reporte', ReporteController::class);
+});
 
 
 
@@ -77,4 +85,4 @@ Route::get('/reportar_averia', [ReportarController::class, 'index'])->name('repo
 Route::get('/cancelar_cita', [CancelarController::class, 'index'])->name('cancelar_cita');
 Route::get('/averias_confirmacion', [AveriaConfirmacionController::class, 'index'])->name('averias_confirmacion');
 Route::get('/averia_confirmada', [AveriaConfirmadaController::class, 'index'])->name('averia_confirmada');
-Route::get('/mapa_con_averias', [MapaAveriasController::class, 'index'])->name('mapa_con_averias');
+//Route::get('/mapa_con_averias', [MapaAveriasController::class, 'index'])->name('mapa_con_averias');

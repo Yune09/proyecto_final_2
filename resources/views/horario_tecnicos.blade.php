@@ -57,16 +57,15 @@
             </div>
         @endif
 
-        <!-- Formulario para reportar avería -->
-        <form id="averia-form" action="{{ route('guardar.averia') }}" method="POST">
+        
+        <form id="horario-form" action="{{ route('guardar.averia') }}" method="POST">
             @csrf
             <input type="text" name="nombre" placeholder="Nombre completo" required>
-    <input type="text" name="cedula" placeholder="Número de cédula" required>
-    <input type="email" name="correo" placeholder="Correo Electrónico" required>
-    <input type="text" name="telefono" placeholder="Número de Teléfono" required>
-    <textarea name="descripcion" placeholder="Descripción de la Avería" required></textarea>
-    <input type="text" name="ubicacion" placeholder="Ubicación (latitud, longitud)" required>
-    <button type="submit">Enviar Solicitud</button>
+            <input type="date" id="fecha" name="fecha">
+            <input type="datetime-local" id="fechaHora" name="fechaHora" required>
+
+    
+            <button type="submit">Guardar</button>
             
         </form>
     </div>

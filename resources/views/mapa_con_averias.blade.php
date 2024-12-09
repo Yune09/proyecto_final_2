@@ -132,30 +132,22 @@
         <!-- Cuadro Informativo de Averías Reportadas -->
         <div class="averias-info">
             <h2>Averías Confirmadas</h2>
-            <table>
+            <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Comunidades Afectadas</th>
+                        <th>Nombre del Lugar</th>
                         <th>Número de Avería</th>
                         <th>Tipo de Avería</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Comunidad 1</td>
-                        <td>001</td>
-                        <td>Internet</td>
-                    </tr>
-                    <tr>
-                        <td>Comunidad 2</td>
-                        <td>002</td>
-                        <td>Televisión</td>
-                    </tr>
-                    <tr>
-                        <td>Comunidad 3</td>
-                        <td>003</td>
-                        <td>Telefonía Móvil</td>
-                    </tr>
+                    @foreach ($averias as $averia)
+                        <tr>
+                            <td>{{ $averia->Nombre }}</td> 
+                            <td>{{ $averia->idReporte_averia }}</td> 
+                            <td>{{ $averia->Descripcion }}</td> 
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
             <p>*Estimaciones sujetas a imprevistos en la zona de reparación</p>
@@ -175,10 +167,11 @@
                 center: { lat: 9.748917, lng: -83.753428 }, // Centro en Costa Rica
                 zoom: 15
             });
+        
         }
     </script>
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzXKfX2DHS1_xKCK5iDM0FUXGZO3WCL64&callback=initMap">
     </script>
 
 </body>
