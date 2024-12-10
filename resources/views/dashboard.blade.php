@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -75,8 +76,10 @@
             <!-- Sección de pago de factura, requerimiento a futuro -->
 
             <!-- Estas opciones se muestran cuando no se ha iniciado sesión -->
-            <li id="login-link"><a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a></li>
-            <li id="register-link"><a href="{{ route('register') }}"><i class="fas fa-user-plus"></i> Registrarse</a></li>
+            <li><a href="{{ route('formulario_reportes') }}"><i class="fas fa-times-circle"></i> Reportes</a></li>
+            <li><a href="{{ route('horario_tecnicos') }}"><i class="fas fa-times-circle"></i> Tecnicos</a></li>
+            <li id="login-link"><a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> Cerrar Sesión</a></li>
+
 
             <!-- Estas opciones se muestran cuando el usuario ha iniciado sesión -->
             <li id="user-info" class="user-info" style="display: none;">
@@ -86,7 +89,7 @@
                     Sesión</a></li>
         </ul>
     </nav>
-
+            
     <!-- Sección de bienvenida -->
     <section class="welcome-section">
         <h1 class="main-title">Bienvenido a nuestra plataforma</h1>

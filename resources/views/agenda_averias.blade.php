@@ -47,8 +47,8 @@
         <form>
             <label for="cedula">Número de Identificación</label>
             <input type="text" id="cedula" placeholder="0XXXXXXXXX">
-            <label for="provincia">Provincia</label>
-            <input type="text" id="provincia" placeholder="Ingrese la provincia">
+            <label for="direccion">Dirección</label>
+            <input type="text" id="direccion" placeholder="Ingrese la dirección">
             <label for="fecha">Elige una fecha:</label>
             <input type="date" id="fecha" name="fecha">
             <button type="button" id="agenda-form">Consultar</button>

@@ -11,9 +11,9 @@ use App\Http\Controllers\AveriaConfirmacionController;
 use App\Http\Controllers\MapaAveriasController;
 use App\Http\Controllers\AveriaConfirmadaController;
 use App\Http\Controllers\AveriaController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\ReporteController;
+use App\Http\Controllers\HorarioTecnicoController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,9 +21,9 @@ Route::get('/', function () {
 
 
 
-/*Route::get('/dashboard', function () {
+Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');*/
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/check-mail-env', function () {
     return [
@@ -34,6 +34,8 @@ Route::get('/check-mail-env', function () {
 //Route::post('/enviar-averia', [AveriasController::class, 'enviarFormularioAveria'])->name('enviar.averia');
 Route::post('/guardar-averia', [AveriaController::class, 'guardarAveria'])->name('guardar.averia');
 Route::get('/mapa_con_averias', [AveriaController::class, 'mostrarAverias'])->name('mapa_con_averias');
+Route::post('/guardar-horario', [HorarioController::class, 'guardarHorario'])->name('guardar.horario');
+//Route::get('/agenda_averias', [HorarioController::class, 'mostrarHorario'])->name('agenda_averias');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -46,6 +48,10 @@ Route::group(['middleware' => ['auth']], function() {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login'); 
 
 
 
@@ -64,11 +70,6 @@ Route::get('/instalaciones_confirmada', function () {
     return view('instalaciones_confirmada');
 });
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('horario', HorarioController::class);
-    Route::resource('reporte', ReporteController::class);
-});
 
 
 
@@ -85,4 +86,7 @@ Route::get('/reportar_averia', [ReportarController::class, 'index'])->name('repo
 Route::get('/cancelar_cita', [CancelarController::class, 'index'])->name('cancelar_cita');
 Route::get('/averias_confirmacion', [AveriaConfirmacionController::class, 'index'])->name('averias_confirmacion');
 Route::get('/averia_confirmada', [AveriaConfirmadaController::class, 'index'])->name('averia_confirmada');
+Route::get('/horario_tecnicos', [HorarioTecnicoController::class, 'index'])->name('horario_tecnicos');
+Route::get('/formulario_reportes', [ReporteController::class, 'index'])->name('formulario_reportes');
+
 //Route::get('/mapa_con_averias', [MapaAveriasController::class, 'index'])->name('mapa_con_averias');

@@ -42,7 +42,7 @@
 
     <!-- Contenedor principal -->
     <div class="averia-container">
-        <h1>Reportar Avería</h1>
+        <h1>Ingresar Horario</h1>
 
         <!-- Mensajes de éxito o error -->
         @if(session('success'))
@@ -58,11 +58,11 @@
         @endif
 
         
-        <form id="horario-form" action="{{ route('guardar.averia') }}" method="POST">
+        <form id="horario-form" action="{{ route('guardar.horario') }}" method="POST">
             @csrf
             <input type="text" name="nombre" placeholder="Nombre completo" required>
             <input type="date" id="fecha" name="fecha">
-            <input type="datetime-local" id="fechaHora" name="fechaHora" required>
+            <input type="time" id="horario" name="horario" required>
 
     
             <button type="submit">Guardar</button>
