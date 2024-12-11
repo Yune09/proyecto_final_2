@@ -31,7 +31,7 @@ Route::get('/check-mail-env', function () {
         'MAIL_FROM_NAME' => env('MAIL_FROM_NAME'),
     ];
 });
-//Route::post('/enviar-averia', [AveriasController::class, 'enviarFormularioAveria'])->name('enviar.averia');
+Route::post('/enviar-averia', [AveriaController::class, 'enviarFormularioAveria'])->name('enviar.averia');
 Route::post('/guardar-averia', [AveriaController::class, 'guardarAveria'])->name('guardar.averia');
 Route::get('/mapa_con_averias', [AveriaController::class, 'mostrarAverias'])->name('mapa_con_averias');
 Route::post('/guardar-horario', [HorarioController::class, 'guardarHorario'])->name('guardar.horario');
@@ -49,9 +49,7 @@ Route::group(['middleware' => ['auth']], function() {
 
 require __DIR__.'/auth.php';
 
-Route::get('/login', function () {
-    return view('login');
-})->name('login'); 
+Route::get('/consultar-tecnicos', [AgendaAveriasController::class, 'consultarTecnicos']);
 
 
 

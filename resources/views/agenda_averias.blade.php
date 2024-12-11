@@ -45,20 +45,20 @@
     <div class="agenda-container">
         <h1>Agendar Avería</h1>
         <form>
+            <label for="cedula">Nombre</label>
+            <input type="text" id="cedula" placeholder="Ingrese el nombre">
             <label for="cedula">Número de Identificación</label>
             <input type="text" id="cedula" placeholder="0XXXXXXXXX">
             <label for="direccion">Dirección</label>
             <input type="text" id="direccion" placeholder="Ingrese la dirección">
-            <label for="fecha">Elige una fecha:</label>
-            <input type="date" id="fecha" name="fecha">
             <button type="button" id="agenda-form">Consultar</button>
         </form>
-        <div id="averias-table-container"></div>
+        <div id="tabla-tecnicos-container"></div>
     </div>
 
     <script>
         document.getElementById('agenda-form').addEventListener('click', function () {
-            const container = document.getElementById('averias-table-container');
+            const container = document.getElementById('tabla-tecnicos-container');
 
             // Verificar si la tabla está visible y ocultarla si es necesario
             if (container.innerHTML) {
@@ -96,10 +96,10 @@
                     data.forEach(tecnico => {
                         tableHTML += `
                             <tr>
-                                <td>${tecnico.tecnico}</td>
-                                <td>${tecnico.dia}</td>
+                                <td>${tecnico.nombre}</td>
+                                <td>${tecnico.fecha}</td>
                                 <td>${tecnico.horario}</td>
-                                <td><button onclick="seleccionarTecnico('${tecnico.tecnico}', '${tecnico.dia}', '${tecnico.horario}')">Seleccionar</button></td>
+                                <td><button onclick="seleccionarTecnico('${tecnico.nombre}', '${tecnico.fecha}', '${tecnico.horario}')">Seleccionar</button></td>
                             </tr>
                         `;
                     });
@@ -118,11 +118,11 @@
 
         // Función para manejar la selección de un técnico
         function seleccionarTecnico(tecnico, dia, horario) {
-    alert(`Has seleccionado al técnico ${tecnico} el día ${dia} en el horario ${horario}.`);
-    window.location.href = '/averias_confirmacion';
-    
-}
-
+            alert('Has seleccionado al técnico ${tecnico} el día ${dia} en el horario ${horario}.');
+            window.location.href = '/averias_confirmacion';
+        }
     </script>
+
+
 </body>
 </html>
